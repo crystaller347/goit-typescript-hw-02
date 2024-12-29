@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react';
-import { fetchImages } from '../../images-api.js';
-import SearchBar from '../SearchBar/SearchBar.jsx';
-import Loader from '../Loader/Loader.jsx';
-import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx';
-import ImageGallery from '../ImageGallery/ImageGallery.jsx';
-import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.jsx';
-import ImageModal from '../ImageModal/ImageModal.jsx';
+import { fetchImages } from '../../images-api.ts';
+import SearchBar from '../SearchBar/SearchBar.tsx';
+import Loader from '../Loader/Loader.tsx';
+import ErrorMessage from '../ErrorMessage/ErrorMessage.tsx';
+import ImageGallery from '../ImageGallery/ImageGallery.tsx';
+import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn.tsx';
+import ImageModal from '../ImageModal/ImageModal.tsx';
+import { type Image, type FetchImages } from '../../types.ts';
 
 export default function App() {
-  const [images, setImages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [totalPages, setTotalPages] = useState(0);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [modal, setModal] = useState(false);
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState<Image[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
+  const [modal, setModal] = useState<boolean>(false);
+  const [image, setImage] = useState<Image | null>(null);
 
-  const handleSubmit = (query) => {
+  const handleSubmit = (query: string): void => {
     setQuery(query);
     setPage(1);
     setImages([]);
@@ -27,7 +28,7 @@ export default function App() {
     if (!query) {
       return;
     }
-    const asyncWrapper = async () => {
+    const asyncWrapper = async (): Promise<FetchImages> => {
       try {
         setError(false);
         setLoading(true);
@@ -43,16 +44,16 @@ export default function App() {
     asyncWrapper();
   }, [query, page]);
 
-  const handleLoad = () => {
+  const handleLoad = (): void => {
     setPage(prevPage => prevPage + 1);
   }
 
-  const openModal = (image) => {
+  const openModal = (image: Image): void => {
     setImage(image);
     setModal(true);
   }
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setImage(null);
     setModal(false);
   }

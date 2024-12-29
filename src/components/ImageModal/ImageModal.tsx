@@ -1,8 +1,9 @@
 import css from './ImageModal.module.css';
 import Modal from 'react-modal';
 import { GoHeartFill } from "react-icons/go";
+import { type Image } from '../../types.ts';
 
-const customStyles = {
+const customStyles: Modal.Styles = {
     content: {
         top: '50%',
         left: '50%',
@@ -25,7 +26,13 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export default function ImageModal({ isOpen, image, close }) {
+type Props = {
+    isOpen: boolean;
+    image: Image | null;
+    close: () => void;
+}
+
+export default function ImageModal({ isOpen, image, close }: Props) {
     return (
         <Modal isOpen={isOpen}
             onRequestClose={close}
@@ -41,8 +48,7 @@ export default function ImageModal({ isOpen, image, close }) {
                 {image?.description ?
                     (<p className={css.description}>
                         {image.description}</p>) :
-                    (<p className={css.defaultDescription}>
-                        This picture doesn't have a description yet, please contribute by adding it!</p>)}
+                    (<p className={css.defaultDescription}><i>This picture doesn't have a description yet, please contribute by adding it!</i></p>)}
             </div>
         </Modal>
     )
