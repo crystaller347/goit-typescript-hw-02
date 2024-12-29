@@ -28,7 +28,7 @@ export default function App() {
     if (!query) {
       return;
     }
-    const asyncWrapper = async (): Promise<FetchImages> => {
+    const asyncWrapper = async () => {
       try {
         setError(false);
         setLoading(true);
