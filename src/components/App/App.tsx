@@ -28,7 +28,7 @@ export default function App() {
     if (!query) {
       return;
     }
-    const asyncWrapper = async () => {
+    const asyncWrapper = async (): Promise<void> => {
       try {
         setError(false);
         setLoading(true);
