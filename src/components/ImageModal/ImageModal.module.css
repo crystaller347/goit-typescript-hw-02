@@ -1,0 +1,41 @@
+.imageContainer {
+  flex: 5;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.descriptionContainer {
+  flex: 1;
+  margin: 15px 5px 0 15px;
+}
+
+.likesSection {
+  margin-bottom: 5px;
+}
+
+.heartIcon {
+  margin-right: 5px;
+}
+
+.likesCount {
+  font-size: 18px;
+}
+
+.description {
+  font-size: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0;
+}
+
+.defaultDescription {
+  font-size: 18px;
+  margin-top: 0;
+}

@@ -1,0 +1,29 @@
+.header {
+  background-color: #24bfda;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.input {
+  width: 300px;
+  height: 37px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid black;
+  margin-right: 15px;
+}
+
+.button {
+  width: 90px;
+  height: 35px;
+  border-radius: 7px;
+  border: 1px solid black;
+}
+
+.button:hover {
+  background-color: #dcdcdc;
+}
